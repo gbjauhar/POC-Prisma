@@ -1,6 +1,7 @@
 import prisma from "../database/server.js"
+import { Author } from "../protocols/author.js"
 
-export async function create(author){
+export async function create(author: Author){
     return prisma.authors.create({data: author})
 }
 

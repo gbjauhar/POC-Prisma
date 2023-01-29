@@ -1,6 +1,7 @@
 import prisma from "../database/server.js"
+import { Genre } from "../protocols/genre.js"
 
-export async function create(genre){
+export async function create(genre: Genre){
     return prisma.genres.create({data: genre})
 }
 
