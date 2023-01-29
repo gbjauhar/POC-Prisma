@@ -1,4 +1,3 @@
-import { Book } from './../protocols/book.js';
 import { Request, Response } from "express"
 import booksRepository from "../repositories/books.repository.js"
 

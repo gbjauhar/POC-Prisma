@@ -1,5 +1,4 @@
 import { NextFunction, Request, Response } from "express"
-import { array } from "joi"
 import bookModel from "../schemas/books.schemas.js"
 
 export default function postBookValidation(req: Request, res: Response, next: NextFunction): Response{

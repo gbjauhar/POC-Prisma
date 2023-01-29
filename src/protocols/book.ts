@@ -1,8 +1,8 @@
 export type BookEntity = {
     id: number,
     title: string,
-    author: string,
-    genre: string,
+    author_id: number,
+    genre_id: number,
     status: string
 }
 

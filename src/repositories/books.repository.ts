@@ -23,6 +23,7 @@ export async function update(id: number, status: string){
     return prisma.books.update({where: {id: id}, data: {status: status}})
 }
 
+
 const booksRepository = {
     create,
     retrieve,
