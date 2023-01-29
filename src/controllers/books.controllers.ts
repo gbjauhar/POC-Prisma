@@ -3,9 +3,8 @@ import { Request, Response } from "express"
 import booksRepository from "../repositories/books.repository.js"
 
 export async function createBook(req: Request, res: Response): Promise<void> {
-    const { title, author, genre, status } = req.body as Book
     try {
-        await booksRepository.create(title, author, genre, status)
+        await booksRepository.create(req.body)
         res.sendStatus(201)
     } catch (err) {
         res.sendStatus(500)
@@ -15,8 +14,8 @@ export async function createBook(req: Request, res: Response): Promise<void> {
 
 export async function getBooks(req: Request, res: Response): Promise<void> {
     try {
-        const { rows } = await booksRepository.retrieve()
-        res.send(rows)
+        const result = await booksRepository.retrieve()
+        res.send(result.map(value => value))
     } catch (err) {
         res.sendStatus(500)
         console.log(err)
@@ -26,8 +25,8 @@ export async function getBooks(req: Request, res: Response): Promise<void> {
 export async function getByStatus(req: Request, res: Response): Promise<void> {
     const { status } = req.query
     try {
-        const { rows } = await booksRepository.retrieveByStatus(status.toString())
-        res.send(rows)
+        const result = await booksRepository.retrieveByStatus(status.toString())
+        res.send(result.map(value => value))
     } catch (err) {
         res.sendStatus(500)
         console.log(err)
